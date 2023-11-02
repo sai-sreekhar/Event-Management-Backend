@@ -1,12 +1,7 @@
 const mongoose = require("mongoose");
-const path = require("path");
-require("dotenv").config({ path: path.resolve(__dirname, "./.env") });
-
 let conn = null;
 
-const uri = process.env.DB_CONNECTION;
-
-exports.connectToDB = async function () {
+exports.connectToDB = async function (uri) {
   if (conn == null) {
     try {
       conn = await mongoose.connect(uri, {

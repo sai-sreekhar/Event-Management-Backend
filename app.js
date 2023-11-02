@@ -16,7 +16,7 @@ app.use(express.json());
 //   .then(() => console.log("Connected to Database"))
 //   .catch((error) => console.log(error));
 
-connectToDB()
+connectToDB(process.env.DB_CONNECTION)
 
 app.use(function (req, res, next) {
   // Website you wish to allow to connect
@@ -48,6 +48,7 @@ process.env.NODE_ENV != "PRODUCTION" &&
 
 app.use("/api/v1/auth", require("./src/v1/routes/auth.routes"));
 app.use("/api/v1/myevents", require("./src/v1/routes/myEvents.routes"));
+app.use("/api/v1/events", require("./src/v1/routes/events.routes"));
 
 //all invalid urls handled here
 app.all("*", (req, res, next) => {
