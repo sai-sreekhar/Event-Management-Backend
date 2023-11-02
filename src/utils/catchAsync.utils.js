@@ -1,5 +1,5 @@
-const AppError = require("./appError");
-const { errorCodes } = require("./constants");
+const AppError = require("./appError.utils");
+const { errorCodes } = require("./constants.utils");
 
 module.exports = (fn) => {
   return (req, res, next) => {

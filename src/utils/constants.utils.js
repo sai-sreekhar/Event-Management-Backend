@@ -3,6 +3,9 @@ const errorCodes = {
   EXCEPTION: 1,
   INTERNAL_SERVER_ERROR: 2,
   INVALID_URL: 3,
+  INPUT_PARAMS_INVALID: 4,
+  EMAIL_ALREADY_EXISTS: 5,
+  CONTACT_ALREADY_EXISTS: 6,
 };
 
 module.exports = {
