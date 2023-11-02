@@ -1,3 +1,4 @@
+const { errorCodes } = require("../utils/constants.utils.js");
 const AppError = require("./../utils/appError.utils.js");
 
 const handleCastErrorDB = (err) => {
@@ -23,7 +24,10 @@ const sendErrorProdEnv = (err, res) => {
   if (err.isOperational) {
     res.status(err.statusCode).json({
       status: err.status,
-      message: err.message,
+      data: {
+        errorCode: err.errorCode,
+        errorDesc: err.message,
+      },
     });
   }
   //sending a generic response incase of errors due to coding problems
@@ -34,7 +38,10 @@ const sendErrorProdEnv = (err, res) => {
     //sending generic response
     res.status(500).json({
       status: "error",
-      message: "Something went wrong from our side!",
+      data: {
+        errorCode: errorCodes.INTERNAL_SERVER_ERROR,
+        errorDesc: "Something went wrong!",
+      },
     });
   }
 };
@@ -42,9 +49,11 @@ const sendErrorProdEnv = (err, res) => {
 const sendErrorDevEnv = (err, res) => {
   res.status(err.statusCode).json({
     status: err.status,
-    error: err,
-    message: err.message,
-    stack: err.stack,
+    data: {
+      errorCode: err.errorCode,
+      errorDesc: err.message,
+      stack: err.stack,
+    },
   });
 };
 
