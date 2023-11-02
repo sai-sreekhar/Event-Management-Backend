@@ -39,6 +39,7 @@ process.env.NODE_ENV != "PRODUCTION" &&
   app.use(morgan(":method :url :status :req-headers"));
 
 app.use("/api/v1/auth", require("./src/v1/routes/auth.routes"));
+app.use("/api/v1/myevents", require("./src/v1/routes/myEvents.routes"));
 
 //all invalid urls handled here
 app.all("*", (req, res, next) => {

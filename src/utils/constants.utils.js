@@ -8,8 +8,10 @@ const errorCodes = {
   CONTACT_ALREADY_EXISTS: 6,
   INVALID_EMAIL_OR_PASSWORD: 7,
   INVALID_TOKEN: 8,
+  EVENT_ID_NOT_FOUND: 9,
+  USER_NOT_AUTHORIZED: 10,
 };
 
-module.exports = {
+module.exports = {  
   errorCodes,
 };

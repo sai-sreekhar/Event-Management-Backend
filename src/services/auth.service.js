@@ -77,6 +77,17 @@ async function loginUser(email, password) {
   }
 
   const { accessToken } = await generateTokens(user);
+
+  await Users.updateOne(
+    { _id: user._id },
+    {
+      $set: {
+        accessToken: accessToken,
+        accessTokenCreatedAt: Date.now(),
+      },
+    }
+  );
+  
   return { userId: user._id, accessToken };
 }
 
