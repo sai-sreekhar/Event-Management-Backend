@@ -5,7 +5,6 @@ const { errorCodes } = require("./../utils/constants.utils");
 const bcrypt = require("bcrypt");
 
 async function createUser(name, email, contact, password) {
-  
   //checking email and contact already exists or not
   const existingUser = await Users.findOne({
     $or: [{ email: email }, { contact: contact }],
@@ -81,7 +80,27 @@ async function loginUser(email, password) {
   return { userId: user._id, accessToken };
 }
 
+async function logoutUser(accessToken) {
+  const user = await Users.findOne({ accessToken: accessToken });
+  if (!user) {
+    throw new AppError("Invalid access token", 401, errorCodes.INVALID_TOKEN);
+  }
+
+  await Users.updateOne(
+    { _id: user._id },
+    {
+      $set: {
+        accessToken: null,
+        accessTokenCreatedAt: null,
+      },
+    }
+  );
+
+  return { userId: user._id };
+}
+
 module.exports = {
   createUser,
   loginUser,
+  logoutUser,
 };

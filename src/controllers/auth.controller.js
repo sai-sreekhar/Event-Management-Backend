@@ -3,7 +3,12 @@ const catchAsync = require("./../utils/catchAsync.utils");
 const { errorCodes } = require("./../utils/constants.utils");
 const { signupBodyValidation } = require("./../validations/signup.validations");
 const { loginBodyValidation } = require("./../validations/login.validations");
-const { createUser, loginUser } = require("../services/auth.service");
+const { logoutBodyValidation } = require("../validations/logout.validation");
+const {
+  createUser,
+  loginUser,
+  logoutUser,
+} = require("../services/auth.service");
 
 exports.signup = catchAsync(async (req, res, next) => {
   const { error } = signupBodyValidation(req.body);
@@ -53,6 +58,27 @@ exports.login = catchAsync(async (req, res, next) => {
       message: "Logged in successfully",
       userId,
       accessToken,
+    },
+  });
+});
+
+exports.logout = catchAsync(async (req, res, next) => {
+  const { error } = logoutBodyValidation(req.body);
+  if (error) {
+    throw new AppError(
+      error.details[0].message,
+      400,
+      errorCodes.INPUT_PARAMS_INVALID
+    );
+  }
+
+  const { userId } = await logoutUser(req.body.accessToken);
+
+  res.status(200).json({
+    status: "success",
+    data: {
+      message: "Logged out successfully",
+      userId,
     },
   });
 });
