@@ -162,13 +162,13 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/sample-application/dev/1698851618114-2023-11-01T15:13:38.114Z/sample-application.zip"
+          "S3Key": "serverless/sample-application/dev/1698926278052-2023-11-02T11:57:58.052Z/sample-application.zip"
         },
         "Handler": "app.handler",
-        "Runtime": "nodejs14.x",
+        "Runtime": "nodejs18.x",
         "FunctionName": "sample-application-dev-app",
         "MemorySize": 128,
-        "Timeout": 6,
+        "Timeout": 60,
         "Role": {
           "Fn::GetAtt": [
             "IamRoleLambdaExecution",
@@ -180,14 +180,14 @@
         "AppLogGroup"
       ]
     },
-    "AppLambdaVersionheqlsSMbNZjenIvl7oGvFBPkseg2JerHOtjdnZLqcLY": {
+    "AppLambdaVersionUzyXmDBdmbhUUjw6NCGLYTbXTGnNixdZ4M04dL9WiJI": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "AppLambdaFunction"
         },
-        "CodeSha256": "GgaUicrChE9JmEKXHyWTnNS/aTPuW9y0l4lnzwXgSb8="
+        "CodeSha256": "AroV1+kBvhWAdA/EKu+NWXk9+1HFPXU6Ef2Q0qTIGbg="
       }
     },
     "ApiGatewayRestApi": {
@@ -405,7 +405,7 @@
         "AppLambdaPermissionApiGateway"
       ]
     },
-    "ApiGatewayDeployment1698851612168": {
+    "ApiGatewayDeployment1698926269145": {
       "Type": "AWS::ApiGateway::Deployment",
       "Properties": {
         "RestApiId": {
@@ -470,7 +470,7 @@
     "AppLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "AppLambdaVersionheqlsSMbNZjenIvl7oGvFBPkseg2JerHOtjdnZLqcLY"
+        "Ref": "AppLambdaVersionUzyXmDBdmbhUUjw6NCGLYTbXTGnNixdZ4M04dL9WiJI"
       },
       "Export": {
         "Name": "sls-sample-application-dev-AppLambdaFunctionQualifiedArn"

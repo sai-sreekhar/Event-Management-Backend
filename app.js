@@ -1,14 +1,19 @@
+const serverless = require("serverless-http");
 const express = require("express");
 const errorController = require("./src/controllers/error.controller");
 const { errorCodes } = require("./src/utils/constants.utils");
 const AppError = require("./src/utils/appError.utils");
 const morgan = require("morgan");
 const path = require("path");
+const { connectToDatabase } = require("./src/configs/db.config");
 require("dotenv").config({ path: path.resolve(__dirname, "./.env") });
-
 const app = express();
 
 app.use(express.json());
+
+connectToDatabase()
+  .then(() => console.log("Connected to Database"))
+  .catch((error) => console.log(error));
 
 app.use(function (req, res, next) {
   // Website you wish to allow to connect
@@ -54,4 +59,4 @@ app.all("*", (req, res, next) => {
 
 app.use(errorController);
 
-module.exports = app;
+module.exports.handler = serverless(app);
