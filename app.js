@@ -50,6 +50,7 @@ app.use("/api/v1/auth", require("./src/v1/routes/auth.routes"));
 app.use("/api/v1/myevents", require("./src/v1/routes/myEvents.routes"));
 app.use("/api/v1/events", require("./src/v1/routes/events.routes"));
 app.use("/api/v1/users", require("./src/v1/routes/users.routes"));
+app.use("/api/v1/registrations", require("./src/v1/routes/registrations.routes"));
 
 //all invalid urls handled here
 app.all("*", (req, res, next) => {

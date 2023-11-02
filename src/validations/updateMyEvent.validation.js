@@ -5,8 +5,7 @@ module.exports = {
     const schema = Joi.object({
       name: Joi.string(),
       description: Joi.string(),
-      date: Joi.string(),
-      time: Joi.string(),
+      date: Joi.date().timestamp(),
       location: Joi.string(),
       image: Joi.string(),
       limit: Joi.number(),

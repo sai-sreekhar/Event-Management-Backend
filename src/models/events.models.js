@@ -10,7 +10,6 @@ const eventSchema = new mongoose.Schema(
     name: String,
     description: String,
     date: String,
-    time: String,
     location: String,
     image: String,
     limit: Number,

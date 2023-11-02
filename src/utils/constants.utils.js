@@ -10,8 +10,13 @@ const errorCodes = {
   INVALID_TOKEN: 8,
   EVENT_ID_NOT_FOUND: 9,
   USER_NOT_AUTHORIZED: 10,
+  USER_ALREADY_REGISTERED: 11,
+  USER_NOT_REGISTERED: 12,
+  EVENT_EXPIRED: 13,
+  EVENT_FULL: 14,
+  USER_REGISTERING_FOR_OWN_EVENT: 15,
 };
 
-module.exports = {  
+module.exports = {
   errorCodes,
 };
