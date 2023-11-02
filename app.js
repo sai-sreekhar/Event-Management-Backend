@@ -5,15 +5,18 @@ const { errorCodes } = require("./src/utils/constants.utils");
 const AppError = require("./src/utils/appError.utils");
 const morgan = require("morgan");
 const path = require("path");
-const { connectToDatabase } = require("./src/configs/db.config");
+// const { connectToDatabase } = require("./src/configs/db.config");
+const { connectToDB } = require("./src/configs/db.config");
 require("dotenv").config({ path: path.resolve(__dirname, "./.env") });
 const app = express();
 
 app.use(express.json());
 
-connectToDatabase()
-  .then(() => console.log("Connected to Database"))
-  .catch((error) => console.log(error));
+// connectToDatabase()
+//   .then(() => console.log("Connected to Database"))
+//   .catch((error) => console.log(error));
+
+connectToDB()
 
 app.use(function (req, res, next) {
   // Website you wish to allow to connect
