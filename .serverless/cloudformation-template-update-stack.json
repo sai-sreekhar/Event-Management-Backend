@@ -74,7 +74,7 @@
     "AppLogGroup": {
       "Type": "AWS::Logs::LogGroup",
       "Properties": {
-        "LogGroupName": "/aws/lambda/sample-application-dev-app"
+        "LogGroupName": "/aws/lambda/event-whiz-dev-app"
       }
     },
     "IamRoleLambdaExecution": {
@@ -102,7 +102,7 @@
               "Fn::Join": [
                 "-",
                 [
-                  "sample-application",
+                  "event-whiz",
                   "dev",
                   "lambda"
                 ]
@@ -120,7 +120,7 @@
                   ],
                   "Resource": [
                     {
-                      "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/sample-application-dev*:*"
+                      "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/event-whiz-dev*:*"
                     }
                   ]
                 },
@@ -131,7 +131,7 @@
                   ],
                   "Resource": [
                     {
-                      "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/sample-application-dev*:*:*"
+                      "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/event-whiz-dev*:*:*"
                     }
                   ]
                 }
@@ -144,7 +144,7 @@
           "Fn::Join": [
             "-",
             [
-              "sample-application",
+              "event-whiz",
               "dev",
               {
                 "Ref": "AWS::Region"
@@ -162,11 +162,11 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/sample-application/dev/1698932035070-2023-11-02T13:33:55.070Z/sample-application.zip"
+          "S3Key": "serverless/event-whiz/dev/1698936501817-2023-11-02T14:48:21.817Z/event-whiz.zip"
         },
         "Handler": "app.handler",
         "Runtime": "nodejs18.x",
-        "FunctionName": "sample-application-dev-app",
+        "FunctionName": "event-whiz-dev-app",
         "MemorySize": 128,
         "Timeout": 60,
         "Role": {
@@ -180,20 +180,20 @@
         "AppLogGroup"
       ]
     },
-    "AppLambdaVersion2IV7RncptCbi14BMCPHg0f7eAVaLFrbeV2AIVCqqs": {
+    "AppLambdaVersionNlYhv4Ers1e57fKaOrWTtTnMNaPsqX6l87w8dQPA": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "AppLambdaFunction"
         },
-        "CodeSha256": "5A9KncTY3iDHsili/XgODG1wA6dvB1qlnslCajucYS0="
+        "CodeSha256": "ancSj/HiDyyeSymJ0fJtAGIyZJUtmrOdYON63wEzlVw="
       }
     },
     "ApiGatewayRestApi": {
       "Type": "AWS::ApiGateway::RestApi",
       "Properties": {
-        "Name": "dev-sample-application",
+        "Name": "dev-event-whiz",
         "EndpointConfiguration": {
           "Types": [
             "EDGE"
@@ -405,7 +405,7 @@
         "AppLambdaPermissionApiGateway"
       ]
     },
-    "ApiGatewayDeployment1698932026809": {
+    "ApiGatewayDeployment1698936493530": {
       "Type": "AWS::ApiGateway::Deployment",
       "Properties": {
         "RestApiId": {
@@ -464,16 +464,16 @@
         "Ref": "ServerlessDeploymentBucket"
       },
       "Export": {
-        "Name": "sls-sample-application-dev-ServerlessDeploymentBucketName"
+        "Name": "sls-event-whiz-dev-ServerlessDeploymentBucketName"
       }
     },
     "AppLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "AppLambdaVersion2IV7RncptCbi14BMCPHg0f7eAVaLFrbeV2AIVCqqs"
+        "Ref": "AppLambdaVersionNlYhv4Ers1e57fKaOrWTtTnMNaPsqX6l87w8dQPA"
       },
       "Export": {
-        "Name": "sls-sample-application-dev-AppLambdaFunctionQualifiedArn"
+        "Name": "sls-event-whiz-dev-AppLambdaFunctionQualifiedArn"
       }
     },
     "ServiceEndpoint": {
@@ -499,7 +499,7 @@
         ]
       },
       "Export": {
-        "Name": "sls-sample-application-dev-ServiceEndpoint"
+        "Name": "sls-event-whiz-dev-ServiceEndpoint"
       }
     }
   }

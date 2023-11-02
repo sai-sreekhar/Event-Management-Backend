@@ -1,4 +1,4 @@
-service: sample-application 
+service: event-whiz 
 disabledDeprecations: '*' 
 configValidationMode: error 
 provider: 
@@ -13,7 +13,7 @@ plugins:
   - serverless-domain-manager
 custom:
   customDomain:
-    domainName: apiv3.eventwhiz.site
+    domainName: apiv1.eventwhiz.site
     certificateName: 'eventwhiz.site'
     basePath: ''
     stage: ${self:provider.stage}
