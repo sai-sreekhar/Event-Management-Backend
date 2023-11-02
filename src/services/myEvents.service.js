@@ -65,14 +65,14 @@ async function updateMyEventDetails(
   const updatedEvent = await Events.findByIdAndUpdate(
     eventId,
     {
-      name,
-      description,
-      date,
-      time,
-      location,
-      image,
-      limit,
-      price,
+      name: name || event.name,
+      description: description || event.description,
+      date: date || event.date,
+      time: time || event.time,
+      location: location || event.location,
+      image: image || event.image,
+      limit: limit || event.limit,
+      price: price || event.price,
     },
     { new: true }
   );
