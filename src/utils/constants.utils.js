@@ -7,6 +7,7 @@ const errorCodes = {
   EMAIL_ALREADY_EXISTS: 5,
   CONTACT_ALREADY_EXISTS: 6,
   INVALID_EMAIL_OR_PASSWORD: 7,
+  INVALID_TOKEN: 8,
 };
 
 module.exports = {
