@@ -1,5 +1,4 @@
 const express = require("express");
-const cors = require("cors");
 const errorController = require("./src/controllers/error.controller");
 const { errorCodes } = require("./src/utils/constants.utils");
 const AppError = require("./src/utils/appError.utils");
@@ -10,7 +9,6 @@ require("dotenv").config({ path: path.resolve(__dirname, "./.env") });
 const app = express();
 
 app.use(express.json());
-
 
 app.use(function (req, res, next) {
   // Website you wish to allow to connect
@@ -33,12 +31,14 @@ app.use(function (req, res, next) {
   next();
 });
 
-
 morgan.token("req-headers", function (req, res) {
   return JSON.stringify(req.headers);
 });
 
-process.env.NODE_ENV != 'PRODUCTION' && app.use(morgan(":method :url :status :req-headers"));
+process.env.NODE_ENV != "PRODUCTION" &&
+  app.use(morgan(":method :url :status :req-headers"));
+
+app.use("/api/v1/auth", require("./src/v1/routes/auth.routes"));
 
 //all invalid urls handled here
 app.all("*", (req, res, next) => {

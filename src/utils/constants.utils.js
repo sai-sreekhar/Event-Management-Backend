@@ -6,6 +6,7 @@ const errorCodes = {
   INPUT_PARAMS_INVALID: 4,
   EMAIL_ALREADY_EXISTS: 5,
   CONTACT_ALREADY_EXISTS: 6,
+  INVALID_EMAIL_OR_PASSWORD: 7,
 };
 
 module.exports = {
