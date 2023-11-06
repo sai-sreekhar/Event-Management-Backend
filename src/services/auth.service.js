@@ -78,7 +78,7 @@ async function loginUser(email, password) {
 
   const { accessToken } = await generateTokens(user);
 
-  await Users.updateOne(
+  const updatedUser = await Users.updateOne(
     { _id: user._id },
     {
       $set: {
@@ -88,7 +88,9 @@ async function loginUser(email, password) {
     }
   );
   
-  return { userId: user._id, accessToken };
+  const userWithoutPassword = user.toObject();
+  delete userWithoutPassword.password;
+  return { userData: userWithoutPassword, accessToken };
 }
 
 async function logoutUser(accessToken) {

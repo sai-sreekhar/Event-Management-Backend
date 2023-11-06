@@ -31,7 +31,7 @@ exports.signup = catchAsync(async (req, res, next) => {
     status: "success",
     data: {
       message: "User created successfully",
-      user,
+      userData: user,
       accessToken,
     },
   });
@@ -47,7 +47,7 @@ exports.login = catchAsync(async (req, res, next) => {
     );
   }
 
-  const { userId, accessToken } = await loginUser(
+  const { userData, accessToken } = await loginUser(
     req.body.email,
     req.body.password
   );
@@ -56,7 +56,7 @@ exports.login = catchAsync(async (req, res, next) => {
     status: "success",
     data: {
       message: "Logged in successfully",
-      userId,
+      userData: userData,
       accessToken,
     },
   });
@@ -72,7 +72,7 @@ exports.logout = catchAsync(async (req, res, next) => {
     );
   }
 
-  const { userId } = await logoutUser(req.body.accessToken);
+  const { userId } = await logoutUser(req.user._id);
 
   res.status(200).json({
     status: "success",
