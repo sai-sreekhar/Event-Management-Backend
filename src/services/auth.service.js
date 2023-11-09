@@ -87,20 +87,15 @@ async function loginUser(email, password) {
       },
     }
   );
-  
+
   const userWithoutPassword = user.toObject();
   delete userWithoutPassword.password;
   return { userData: userWithoutPassword, accessToken };
 }
 
-async function logoutUser(accessToken) {
-  const user = await Users.findOne({ accessToken: accessToken });
-  if (!user) {
-    throw new AppError("Invalid access token", 401, errorCodes.INVALID_TOKEN);
-  }
-
+async function logoutUser(userId) {
   await Users.updateOne(
-    { _id: user._id },
+    { _id: userId },
     {
       $set: {
         accessToken: null,
@@ -109,7 +104,7 @@ async function logoutUser(accessToken) {
     }
   );
 
-  return { userId: user._id };
+  return { userId: userId };
 }
 
 module.exports = {

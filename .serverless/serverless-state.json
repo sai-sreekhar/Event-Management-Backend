@@ -176,7 +176,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/event-whiz/dev/1699258339370-2023-11-06T08:12:19.370Z/event-whiz.zip"
+                "S3Key": "serverless/event-whiz/dev/1699534459224-2023-11-09T12:54:19.224Z/event-whiz.zip"
               },
               "Handler": "app.handler",
               "Runtime": "nodejs18.x",
@@ -194,14 +194,14 @@
               "AppLogGroup"
             ]
           },
-          "AppLambdaVersionhe60tXhbrxUVjVcABOqJSHs3eaewLxEMf4aDIC8cJag": {
+          "AppLambdaVersionYlnQI38vjwRwxNh4oIKK2S2D4gxQhDCHYnct7VA6k": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "AppLambdaFunction"
               },
-              "CodeSha256": "daYgLHZdmbCn9G525IXBgDpHXiNOFXFzj0flEw9r5eQ="
+              "CodeSha256": "JQH0UNF8k/wXeJt7fl5T8YL5J9W5SiXOBFt1mkHKmtk="
             }
           },
           "ApiGatewayRestApi": {
@@ -419,7 +419,7 @@
               "AppLambdaPermissionApiGateway"
             ]
           },
-          "ApiGatewayDeployment1699258330836": {
+          "ApiGatewayDeployment1699534449768": {
             "Type": "AWS::ApiGateway::Deployment",
             "Properties": {
               "RestApiId": {
@@ -484,7 +484,7 @@
           "AppLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "AppLambdaVersionhe60tXhbrxUVjVcABOqJSHs3eaewLxEMf4aDIC8cJag"
+              "Ref": "AppLambdaVersionYlnQI38vjwRwxNh4oIKK2S2D4gxQhDCHYnct7VA6k"
             },
             "Export": {
               "Name": "sls-event-whiz-dev-AppLambdaFunctionQualifiedArn"
@@ -675,7 +675,7 @@
         "timeout": 60,
         "runtime": "nodejs18.x",
         "vpc": {},
-        "versionLogicalId": "AppLambdaVersionhe60tXhbrxUVjVcABOqJSHs3eaewLxEMf4aDIC8cJag"
+        "versionLogicalId": "AppLambdaVersionYlnQI38vjwRwxNh4oIKK2S2D4gxQhDCHYnct7VA6k"
       }
     },
     "configValidationMode": "error",
@@ -703,7 +703,7 @@
     "artifact": "/home/saisreekar/Event-Management-Backend/.serverless/event-whiz.zip"
   },
   "package": {
-    "artifactDirectoryName": "serverless/event-whiz/dev/1699258339370-2023-11-06T08:12:19.370Z",
+    "artifactDirectoryName": "serverless/event-whiz/dev/1699534459224-2023-11-09T12:54:19.224Z",
     "artifact": "event-whiz.zip"
   }
 }
