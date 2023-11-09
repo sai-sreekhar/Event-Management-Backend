@@ -63,15 +63,6 @@ exports.login = catchAsync(async (req, res, next) => {
 });
 
 exports.logout = catchAsync(async (req, res, next) => {
-  const { error } = logoutBodyValidation(req.body);
-  if (error) {
-    throw new AppError(
-      error.details[0].message,
-      400,
-      errorCodes.INPUT_PARAMS_INVALID
-    );
-  }
-
   const { userId } = await logoutUser(req.user._id);
 
   res.status(200).json({
