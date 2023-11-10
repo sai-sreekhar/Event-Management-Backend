@@ -3,7 +3,7 @@ const AppError = require("./../utils/appError.utils");
 const { errorCodes } = require("./../utils/constants.utils");
 
 async function getAllEventsBriefInfo() {
-  const events = await Events.find().select("name description image");
+  const events = await Events.find().select("name location date image");
   return events;
 }
 
