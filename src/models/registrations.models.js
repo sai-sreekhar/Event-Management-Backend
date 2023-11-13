@@ -12,6 +12,10 @@ const registrationSchema = new mongoose.Schema(
       ref: "Events",
       required: true,
     },
+    createdAt: {
+      type: String,
+      required: true,
+    },
   },
   { collection: "Registrations" }
 );

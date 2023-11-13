@@ -50,7 +50,7 @@ async function registerEventService(userId, eventId) {
   }
 
   //check if event is expired event.date is timestamp
-  const currentDate = new Date().getTime() / 1000; //convert to seconds
+  const currentDate = new Date().getTime(); //convert to seconds
   const eventDate = event.date;
   if (currentDate > eventDate) {
     throw new AppError("Event is expired", 400, errorCodes.EVENT_EXPIRED);
@@ -60,6 +60,7 @@ async function registerEventService(userId, eventId) {
   const newRegistration = await Registrations.create({
     userId: userId,
     eventId: eventId,
+    createdAt: Date.now(),
   });
 
   return newRegistration;
@@ -91,7 +92,7 @@ async function deleteRegistrationService(userId, eventId) {
   }
 
   //check if event is expired event.date is timestamp
-  const currentDate = new Date().getTime() / 1000; //convert to seconds
+  const currentDate = new Date().getTime();
   const eventDate = event.date;
   if (currentDate > eventDate) {
     throw new AppError("Event is expired", 400, errorCodes.EVENT_EXPIRED);
