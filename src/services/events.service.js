@@ -8,12 +8,24 @@ async function getAllEventsBriefInfo() {
 }
 
 async function getEventById(id) {
-  const event = await Events.findById(id);
+  const event = await Events.findById(id).populate("hostId");
   if (!event) {
     throw new AppError("Event not found", 404, errorCodes.EVENT_ID_NOT_FOUND);
   }
-
-  return event;
+  const eventInfo = {
+    _id: event._id,
+    name: event.name,
+    location: event.location,
+    date: event.date,
+    limit: event.limit,
+    description: event.description,
+    hostName: event.hostId.name,
+    hostContact: event.hostId.contact,
+    hostEmail: event.hostId.email,
+    image: event.image,
+    price: event.price,
+  };
+  return eventInfo;
 }
 
 module.exports = {
