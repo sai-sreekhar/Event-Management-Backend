@@ -18,6 +18,12 @@ const errorCodes = {
   EVENT_HAS_REGISTRATIONS: 16,
 };
 
+const imageTypes = {
+  USER_IMAGE: 0,
+  EVENT_IMAGE: 1,
+};
+
 module.exports = {
   errorCodes,
+  imageTypes,
 };

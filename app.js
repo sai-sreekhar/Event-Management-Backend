@@ -9,14 +9,22 @@ const path = require("path");
 const { connectToDB } = require("./src/configs/db.config");
 require("dotenv").config({ path: path.resolve(__dirname, "./.env") });
 const app = express();
-
 app.use(express.json());
+const AWS = require("aws-sdk");
+
+AWS.config.update({
+  credentials: {
+    accessKeyId: process.env.USER_ACCESS_KEY,
+    secretAccessKey: process.env.USER_SECRET_KEY,
+  },
+  region: process.env.BUCKET_REGION,
+});
 
 // connectToDatabase()
 //   .then(() => console.log("Connected to Database"))
 //   .catch((error) => console.log(error));
 
-connectToDB(process.env.DB_CONNECTION)
+connectToDB(process.env.DB_CONNECTION);
 
 app.use(function (req, res, next) {
   // Website you wish to allow to connect
@@ -50,7 +58,11 @@ app.use("/api/v1/auth", require("./src/v1/routes/auth.routes"));
 app.use("/api/v1/myevents", require("./src/v1/routes/myEvents.routes"));
 app.use("/api/v1/events", require("./src/v1/routes/events.routes"));
 app.use("/api/v1/users", require("./src/v1/routes/users.routes"));
-app.use("/api/v1/registrations", require("./src/v1/routes/registrations.routes"));
+app.use(
+  "/api/v1/registrations",
+  require("./src/v1/routes/registrations.routes")
+);
+app.use("/api/v1/aws/s3", require("./src/v1/routes/aws.s3.routes"));
 
 //all invalid urls handled here
 app.all("*", (req, res, next) => {
