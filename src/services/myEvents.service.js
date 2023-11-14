@@ -132,7 +132,10 @@ async function getMyHostedEventRegistrations(eventId, userId) {
   }
 
   //get event registrations
-  const eventRegistrations = await Registrations.find({ eventId: eventId });
+  const eventRegistrations = await Registrations.find({
+    eventId: eventId,
+  }).populate("userId", { name: 1, email: 1, contact: 1 });
+
   return eventRegistrations;
 }
 
