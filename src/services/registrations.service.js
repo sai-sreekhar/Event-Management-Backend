@@ -4,7 +4,9 @@ const AppError = require("./../utils/appError.utils");
 const { errorCodes } = require("./../utils/constants.utils");
 
 async function getUserRegistrations(userId) {
-  const userRegistrations = await Registrations.find({ userId: userId });
+  const userRegistrations = await Registrations.find({
+    userId: userId,
+  }).populate("eventId");
   return userRegistrations;
 }
 
