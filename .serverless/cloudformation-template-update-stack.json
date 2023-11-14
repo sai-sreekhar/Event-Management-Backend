@@ -162,7 +162,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/event-whiz/dev/1699937364423-2023-11-14T04:49:24.423Z/event-whiz.zip"
+          "S3Key": "serverless/event-whiz/dev/1699945720699-2023-11-14T07:08:40.699Z/event-whiz.zip"
         },
         "Handler": "app.handler",
         "Runtime": "nodejs18.x",
@@ -180,14 +180,14 @@
         "AppLogGroup"
       ]
     },
-    "AppLambdaVersionlq9DNzE6EZtRIB18c9eVyVp7LOWP0hbWyLnBwFhuoI": {
+    "AppLambdaVersionYc2AJWGciA5MYSzZPbJfvE0ivZFWO8k5DTujkGDjHIs": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "AppLambdaFunction"
         },
-        "CodeSha256": "82bzr4St7jCOpLnWu30jZvEZWbfqOG2WkD2rGWzyCsA="
+        "CodeSha256": "y0IMEho2FtfjCK9AYyVK30Qr15K6YuVA3VMPh5v7fZs="
       }
     },
     "ApiGatewayRestApi": {
@@ -405,7 +405,7 @@
         "AppLambdaPermissionApiGateway"
       ]
     },
-    "ApiGatewayDeployment1699937357118": {
+    "ApiGatewayDeployment1699945712932": {
       "Type": "AWS::ApiGateway::Deployment",
       "Properties": {
         "RestApiId": {
@@ -470,7 +470,7 @@
     "AppLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "AppLambdaVersionlq9DNzE6EZtRIB18c9eVyVp7LOWP0hbWyLnBwFhuoI"
+        "Ref": "AppLambdaVersionYc2AJWGciA5MYSzZPbJfvE0ivZFWO8k5DTujkGDjHIs"
       },
       "Export": {
         "Name": "sls-event-whiz-dev-AppLambdaFunctionQualifiedArn"

@@ -109,7 +109,12 @@ async function deleteMyHostedEvent(eventId, hostId) {
     );
   }
 
-  console.log("deleting event");
+  const currentDate = new Date().getTime();
+  const eventDate = event.date;
+  if (currentDate > eventDate) {
+    throw new AppError("Event is expired", 400, errorCodes.EVENT_EXPIRED);
+  }
+
   //delete event
   await Events.findByIdAndDelete(eventId);
   return event._id;
