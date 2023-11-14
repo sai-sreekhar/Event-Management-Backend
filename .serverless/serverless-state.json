@@ -176,7 +176,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/event-whiz/dev/1699898750708-2023-11-13T18:05:50.708Z/event-whiz.zip"
+                "S3Key": "serverless/event-whiz/dev/1699900048136-2023-11-13T18:27:28.136Z/event-whiz.zip"
               },
               "Handler": "app.handler",
               "Runtime": "nodejs18.x",
@@ -419,7 +419,7 @@
               "AppLambdaPermissionApiGateway"
             ]
           },
-          "ApiGatewayDeployment1699898740474": {
+          "ApiGatewayDeployment1699900039767": {
             "Type": "AWS::ApiGateway::Deployment",
             "Properties": {
               "RestApiId": {
@@ -703,7 +703,7 @@
     "artifact": "/home/saisreekar/Event-Management-Backend/.serverless/event-whiz.zip"
   },
   "package": {
-    "artifactDirectoryName": "serverless/event-whiz/dev/1699898750708-2023-11-13T18:05:50.708Z",
+    "artifactDirectoryName": "serverless/event-whiz/dev/1699900048136-2023-11-13T18:27:28.136Z",
     "artifact": "event-whiz.zip"
   }
 }

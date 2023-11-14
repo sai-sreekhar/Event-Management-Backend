@@ -15,6 +15,7 @@ const errorCodes = {
   EVENT_EXPIRED: 13,
   EVENT_FULL: 14,
   USER_REGISTERING_FOR_OWN_EVENT: 15,
+  EVENT_HAS_REGISTRATIONS: 16,
 };
 
 module.exports = {

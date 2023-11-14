@@ -4,7 +4,10 @@ const { errorCodes } = require("./../utils/constants.utils");
 
 async function getAllEventsBriefInfo() {
   const events = await Events.find().select("name location date image");
-  return events;
+  const unExpiredEvents = events.filter((event) => {
+    return event.date > new Date().getTime();
+  });
+  return unExpiredEvents;
 }
 
 async function getEventById(id) {

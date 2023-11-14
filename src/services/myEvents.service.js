@@ -58,6 +58,13 @@ async function updateMyEventDetails(
     );
   }
 
+  //check if event is expired event.date is timestamp
+  const currentDate = new Date().getTime();
+  const eventDate = event.date;
+  if (currentDate > eventDate) {
+    throw new AppError("Event is expired", 400, errorCodes.EVENT_EXPIRED);
+  }
+
   //update event
   const updatedEvent = await Events.findByIdAndUpdate(
     eventId,
@@ -89,6 +96,16 @@ async function deleteMyHostedEvent(eventId, hostId) {
       "You are not authorized to delete this event",
       403,
       errorCodes.USER_NOT_AUTHORIZED
+    );
+  }
+
+  //if has user registrations for the event cant delete
+  const eventRegistrations = await Registrations.find({ eventId: eventId });
+  if (eventRegistrations.length > 0) {
+    throw new AppError(
+      "Event has registrations. Cannot delete",
+      400,
+      errorCodes.EVENT_HAS_REGISTRATIONS
     );
   }
 
