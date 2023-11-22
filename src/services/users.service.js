@@ -5,13 +5,26 @@ const { errorCodes } = require("./../utils/constants.utils");
 async function updateUser(userId, name, email, contact) {
   const user = await Users.findById(userId);
   //the email and contact should be unique
-  const users = await Users.find({ $or: [{ email }, { contact }] });
-  if (users) {
-    throw new AppError(
-      "Email or Contact already exists",
-      403,
-      errorCodes.EMAIL_OR_CONTACT_ALREADY_EXISTS
-    );
+  if (email != user.email) {
+    const user = await Users.find({ email });
+    if (user) {
+      throw new AppError(
+        "Email already exists",
+        403,
+        errorCodes.EMAIL_ALREADY_EXISTS
+      );
+    }
+  }
+
+  if (contact != user.contact) {
+    const user = await Users.find({ contact });
+    if (user) {
+      throw new AppError(
+        "Contact already exists",
+        403,
+        errorCodes.CONTACT_ALREADY_EXISTS
+      );
+    }
   }
   
   const updatedUser = await Users.findByIdAndUpdate(
